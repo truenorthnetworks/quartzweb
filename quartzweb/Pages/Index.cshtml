@@ -1,0 +1,15 @@
+﻿@page
+@{
+    //var exp = new Quartz.CronExpression("0 0 19 ? * 4#4 *");
+    var exp = new Quartz.CronExpression(Request.Query["expression"]);
+    var nextvalid1 = exp.GetNextValidTimeAfter(new DateTimeOffset(DateTime.Now));
+    var nextvalid2 = exp.GetNextValidTimeAfter(nextvalid1.Value);
+    var nextvalid3 = exp.GetNextValidTimeAfter(nextvalid2.Value);
+    var nextvalid4 = exp.GetNextValidTimeAfter(nextvalid3.Value);
+    var nextvalid5 = exp.GetNextValidTimeAfter(nextvalid4.Value);
+    WriteLiteral(nextvalid1 + ",");
+    WriteLiteral(nextvalid2 + ",");
+    WriteLiteral(nextvalid3 + ",");
+    WriteLiteral(nextvalid4 + ",");
+    WriteLiteral(nextvalid5);
+}
